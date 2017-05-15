@@ -58,19 +58,23 @@ public class Report {
     String[] years = new String[] { "2014" };
     PatientGenerator patientGenerator = new PatientGenerator();
     for (String year : years) {
-
+      System.out.println("year:  "+year);
       String filePath = yearToFilePath.get(year);
       List<Meta> pMeta = yearToPMeta.get(year);
       List<Meta> iMeta = yearToIMeta.get(year);
       List<Metas> dMetas = yearToDMeta.get(year);
       List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
       ISpecification spec = yearToSpec.get(year);
+      List<String> reportRs = new ArrayList<String>();
       for (Patient p : result) {
         spec.isSatisfiedBy(p);
+        reportRs.add("");
+      }
+      for (String eachRs : reportRs) {
+        System.out.println(eachRs);
       }
     }
   }
-
 
   private static class Pepare2014Meta {
 
