@@ -1,10 +1,9 @@
 package com.ruijin.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by tangjijun on 2017/5/15.
@@ -32,6 +31,23 @@ public class Patient {
 
   public long getId() {
     return id;
+  }
+
+  public boolean hasManyPostionInfect() {
+    if (inspectInfos.isEmpty()) {
+      return false;
+    }
+    if (inspectInfos.size() == 1) {
+      return false;
+    }
+    Set<String> postions = new HashSet<String>();
+    for (InspectInfo inspectInfo : inspectInfos) {
+      String position = inspectInfo.getPosition();
+      if (StringUtils.isNotBlank(position)) {
+        postions.add(position);
+      }
+    }
+    return postions.size() > 1;
   }
 
   public String getName() {
