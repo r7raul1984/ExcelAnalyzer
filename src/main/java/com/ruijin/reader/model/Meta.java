@@ -3,6 +3,9 @@ package com.ruijin.reader.model;
 import com.ruijin.reader.convert.Convert;
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tangjijun on 2017/5/15.
  */
@@ -11,13 +14,13 @@ public class Meta {
   private String fieldName = "";
   private int type = Constant.TYPE_STRING;
   private String defaultValue = "";
-  private int cellIndex = 0;
+  private List<Integer> cellIndexs = new ArrayList<Integer>();
   private Class fieldClass;
   private Convert convert;
 
-  public Meta(String fieldName, int cellIndex, Class fieldClass, Convert convert) {
+  public Meta(String fieldName, List<Integer> cellIndexs, Class fieldClass, Convert convert) {
     this.fieldName = fieldName;
-    this.cellIndex = cellIndex;
+    this.cellIndexs = new ArrayList<Integer>(cellIndexs);
     this.fieldClass = fieldClass;
     this.convert = convert;
     makeTypeInfo(fieldClass);
@@ -54,8 +57,8 @@ public class Meta {
     return defaultValue;
   }
 
-  public int getCellIndex() {
-    return cellIndex;
+  public List<Integer> getCellIndexs() {
+    return cellIndexs;
   }
 
   public Class getFieldClass() {

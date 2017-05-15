@@ -1,3 +1,4 @@
+import com.google.common.collect.Lists;
 import com.ruijin.reader.convert.DateConvert;
 import com.ruijin.reader.convert.IntegerConvert;
 import com.ruijin.reader.convert.StringConvert;
@@ -30,10 +31,11 @@ public class TestConvert {
   }
 
   @Test public void testConvert() throws Exception {
-    mappingMeta.add(new Meta("age", 3, Integer.class, new IntegerConvert()));
-    mappingMeta.add(new Meta("admissionDate", 2, DateTime.class, new DateConvert()));
-    mappingMeta.add(new Meta("id", 1, Integer.class, new IntegerConvert()));
-    mappingMeta.add(new Meta("name", 0, String.class, new StringConvert()));
+    mappingMeta.add(new Meta("age", Lists.newArrayList(3), Integer.class, new IntegerConvert()));
+    mappingMeta
+        .add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
+    mappingMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
+    mappingMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
     List<Patient> result = patientGenerator.makePatients(filePath, 0, mappingMeta, 1);
     assertEquals(2, result.size());
@@ -46,10 +48,11 @@ public class TestConvert {
   }
 
   @Test public void testConvert1() throws Exception {
-    mappingMeta.add(new Meta("age", 5, Integer.class, new IntegerConvert()));
-    mappingMeta.add(new Meta("admissionDate", 2, DateTime.class, new DateConvert()));
-    mappingMeta.add(new Meta("id", 1, Integer.class, new IntegerConvert()));
-    mappingMeta.add(new Meta("name", 0, String.class, new StringConvert()));
+    mappingMeta.add(new Meta("age", Lists.newArrayList(5), Integer.class, new IntegerConvert()));
+    mappingMeta
+        .add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
+    mappingMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
+    mappingMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
     List<Patient> result = patientGenerator.makePatients(filePath, 0, mappingMeta, 1);
     assertEquals(2, result.size());

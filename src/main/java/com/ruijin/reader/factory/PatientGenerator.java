@@ -24,7 +24,6 @@ import java.util.List;
  */
 public class PatientGenerator {
 
-
   public List<Patient> makePatients(String filePath, int sheetIndex, List<Meta> mappingMeta,
       int addRow)
       throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
@@ -36,36 +35,22 @@ public class PatientGenerator {
       Row row = sheet.getRow(rIndex);
       Patient patient = new Patient();
       for (Meta meta : mappingMeta) {
-        Cell cell = row.getCell(meta.getCellIndex());
-        setValueForPatient(patient, meta, cell);
+        List<Integer> cellIndexs = meta.getCellIndexs();
+        List<Cell> cells = new ArrayList<Cell>();
+        for (int cellIndex : cellIndexs) {
+          cells.add(row.getCell(cellIndex));
+        }
+        setValueForPatient(patient, meta, cells);
       }
       result.add(patient);
     }
     return result;
   }
 
-  private void setValueForPatient(Patient patient, Meta meta, Cell cell)
+  private void setValueForPatient(Patient patient, Meta meta, List<Cell> cells)
       throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
     java.lang.reflect.Method method = patient.getClass()
         .getMethod("set" + WordUtils.capitalize(meta.getFieldName()), meta.getFieldClass());
-    if (cell != null) {
-      if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
-        method.invoke(patient, StringUtils.trim(cell.getStringCellValue()));
-      } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-        if (meta.getFieldClass() == DateTime.class) {
-          method.invoke(patient, new DateTime(cell.getDateCellValue()));
-        } else {
-          method.invoke(patient, new Double(cell.getNumericCellValue()).intValue());
-        }
-      }
-    } else {//set default value
-      if (meta.getFieldClass() == DateTime.class) {
-        method.invoke(patient, new DateTime(meta.getDefaultValue()));
-      } else if (meta.getFieldClass() == Integer.class) {
-        method.invoke(patient, Integer.valueOf(meta.getDefaultValue()));
-      } else if (meta.getFieldClass() == String.class) {
-        method.invoke(patient, meta.getDefaultValue());
-      }
-    }
+    method.invoke(patient, meta.getConvert().converTo(cells, meta.getDefaultValue()));
   }
 }
