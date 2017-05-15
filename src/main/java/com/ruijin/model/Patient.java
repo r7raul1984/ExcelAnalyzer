@@ -2,6 +2,8 @@ package com.ruijin.model;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Period;
 
 import java.util.*;
 
@@ -31,6 +33,28 @@ public class Patient {
 
   public long getId() {
     return id;
+  }
+
+  public int getInfectDays() {
+    if (inspectInfos.isEmpty()) {
+      return 0;
+    }
+    if (inspectInfos.size() == 1) {
+      if (StringUtils.isNotBlank(inspectInfos.get(0).getPosition())) {
+        return 1;
+      }
+      return 0;
+    }
+    Collections.sort(inspectInfos, new Comparator<InspectInfo>() {
+
+      public int compare(InspectInfo o1, InspectInfo o2) {
+        return o1.getInspectDate().compareTo(o2.getInspectDate());
+      }
+    });
+    DateTime begin = inspectInfos.get(0).getInspectDate();
+    DateTime end = inspectInfos.get(inspectInfos.size() - 1).getInspectDate();
+    Days days = Days.daysBetween(begin, end);
+    return days.getDays();
   }
 
   public boolean hasManyPostionInfect() {
