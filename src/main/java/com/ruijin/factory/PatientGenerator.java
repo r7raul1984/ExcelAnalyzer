@@ -14,9 +14,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-/**
- * Created by tangjijun on 2017/5/15.
- */
 public class PatientGenerator {
 
   public List<Patient> makePatients(String filePath, int sheetIndex, int addRow, int headrow,

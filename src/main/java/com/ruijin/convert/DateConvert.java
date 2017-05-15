@@ -5,9 +5,6 @@ import org.joda.time.DateTime;
 
 import java.util.List;
 
-/**
- * Created by tangjijun on 2017/5/15.
- */
 public class DateConvert implements Convert {
 
 

@@ -5,9 +5,7 @@ import org.apache.poi.ss.usermodel.Cell;
 
 import java.util.List;
 
-/**
- * Created by tangjijun on 2017/5/15.
- */
+
 public class StringConvert implements Convert {
 
   public Object converTo(List<Cell> cells, String defaultValue) {

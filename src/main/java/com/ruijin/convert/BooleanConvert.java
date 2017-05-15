@@ -8,9 +8,6 @@ import org.apache.poi.ss.usermodel.Row;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-/**
- * Created by tangjijun on 2017/5/15.
- */
 public class BooleanConvert implements Convert {
 
   public Object converTo(Row row, List<Meta> metas)

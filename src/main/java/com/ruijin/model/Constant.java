@@ -1,8 +1,6 @@
 package com.ruijin.model;
 
-/**
- * Created by tangjijun on 2017/5/15.
- */
+
 public class Constant {
 
   public static final int TYPE_NUMERIC = 0;
