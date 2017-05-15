@@ -1,5 +1,6 @@
 package com.ruijin.factory;
 
+import com.google.common.collect.Lists;
 import com.ruijin.model.*;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -57,7 +58,7 @@ public class PatientGenerator {
         keyToPatient.put(id, p);
       }
     }
-    return new ArrayList<Patient>(keyToPatient.values());
+    return Lists.newArrayList(keyToPatient.values());
   }
 
   private Drugfast getDrugfastsInfo(Metas metas, Row headRow, Row row)
