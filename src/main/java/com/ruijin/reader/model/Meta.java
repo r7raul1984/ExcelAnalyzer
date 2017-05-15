@@ -36,6 +36,9 @@ public class Meta {
     } else if (fieldClass == String.class) {
       this.defaultValue = "";
       this.type = Constant.TYPE_STRING;
+    }else if (fieldClass == Boolean.class) {
+      this.defaultValue = "false";
+      this.type = Constant.TYPE_BOOLEAN;
     } else {
       this.defaultValue = "UNKNOW";
       this.type = Constant.TYPE_UNKNOW;

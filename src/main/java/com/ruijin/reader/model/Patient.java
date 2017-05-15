@@ -66,8 +66,8 @@ public class Patient {
     return inspectInfos;
   }
 
-  public void setInspectInfos(List<InspectInfo> inspectInfos) {
-    this.inspectInfos = inspectInfos;
+  public void addInspectInfos(InspectInfo inspectInfo) {
+    inspectInfos.add(inspectInfo);
   }
 
   @Override public String toString() {

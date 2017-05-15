@@ -1,9 +1,11 @@
 import com.google.common.collect.Lists;
+import com.ruijin.reader.convert.BooleanConvert;
 import com.ruijin.reader.convert.DateConvert;
 import com.ruijin.reader.convert.IntegerConvert;
 import com.ruijin.reader.convert.StringConvert;
 import com.ruijin.reader.factory.PatientGenerator;
 import com.ruijin.reader.model.Meta;
+import com.ruijin.reader.model.Metas;
 import com.ruijin.reader.model.Patient;
 import org.joda.time.DateTime;
 import org.junit.Before;
@@ -15,12 +17,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by tangjijun on 2017/5/15.
- */
 public class TestConvert {
 
-  private List<Meta> mappingMeta = new ArrayList<Meta>();
+  private List<Meta> pMeta = new ArrayList<Meta>();
+  private List<Meta> iMeta = new ArrayList<Meta>();
+  private List<Metas> dMetas = new ArrayList<Metas>();
   private String filePath;
   private PatientGenerator patientGenerator = new PatientGenerator();
 
@@ -31,36 +32,44 @@ public class TestConvert {
   }
 
   @Test public void testConvert() throws Exception {
-    mappingMeta.add(new Meta("age", Lists.newArrayList(3), Integer.class, new IntegerConvert()));
-    mappingMeta
-        .add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
-    mappingMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
-    mappingMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
+    pMeta.add(new Meta("age", Lists.newArrayList(3), Integer.class, new IntegerConvert()));
+    pMeta.add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
+    pMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
+    pMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
-    List<Patient> result = patientGenerator.makePatients(filePath, 0, mappingMeta, 1);
+    iMeta.add(new Meta("grem", Lists.newArrayList(6), String.class, new StringConvert()));
+    iMeta.add(new Meta("inspectType", Lists.newArrayList(5), String.class, new StringConvert()));
+    iMeta.add(new Meta("inspectDate", Lists.newArrayList(4), DateTime.class, new DateConvert()));
+
+    Metas metas = new Metas();
+    metas
+        .addMeta(new Meta("drugName", Lists.newArrayList(1007), String.class, new StringConvert()));
+    metas.addMeta(new Meta("isfast", Lists.newArrayList(7), Boolean.class, new BooleanConvert()));
+    dMetas.add(metas);
+
+    List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[]}",
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', drugfasts=[Drugfast{drugName='药1', isfast=true}]}]}",
         result.get(0).toString());
     assertEquals(
-        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[]}",
+        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', drugfasts=[Drugfast{drugName='药1', isfast=false}]}]}",
         result.get(1).toString());
   }
 
   @Test public void testConvert1() throws Exception {
-    mappingMeta.add(new Meta("age", Lists.newArrayList(5), Integer.class, new IntegerConvert()));
-    mappingMeta
-        .add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
-    mappingMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
-    mappingMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
+    pMeta.add(new Meta("age", Lists.newArrayList(5), Integer.class, new IntegerConvert()));
+    pMeta.add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
+    pMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
+    pMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
-    List<Patient> result = patientGenerator.makePatients(filePath, 0, mappingMeta, 1);
+    List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=-1, inspectInfos=[]}",
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', drugfasts=[]}]}",
         result.get(0).toString());
     assertEquals(
-        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[]}",
+        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', drugfasts=[]}]}",
         result.get(1).toString());
   }
 }

@@ -1,6 +1,8 @@
 package com.ruijin.reader.convert;
 
+import com.ruijin.reader.model.Meta;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class IntegerConvert implements Convert {
     }
     return new Integer(defaultValue);
   }
+
 
   public Integer converTo(Object initValue) {
     return ((Double) initValue).intValue();

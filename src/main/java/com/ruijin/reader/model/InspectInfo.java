@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class InspectInfo {
 
+  public static final InspectInfo EMPTY_INSPECTINFO = new InspectInfo();
+
   private DateTime inspectDate;//检验时间
   private String inspectType = "";//3,4
   private String grem = "";//细菌名称
@@ -28,8 +30,8 @@ public class InspectInfo {
     return drugfasts;
   }
 
-  public void setDrugfasts(Set<Drugfast> drugfasts) {
-    this.drugfasts = drugfasts;
+  public void addDrugfasts(Drugfast drugfast) {
+    drugfasts.add(drugfast);
   }
 
   public DateTime getInspectDate() {
@@ -50,6 +52,11 @@ public class InspectInfo {
 
   public String getGrem() {
     return grem;
+  }
+
+  @Override public String toString() {
+    return "InspectInfo{" + "inspectDate=" + inspectDate + ", inspectType='" + inspectType + '\''
+        + ", grem='" + grem + '\'' + ", drugfasts=" + drugfasts + '}';
   }
 
   public void setGrem(String grem) {

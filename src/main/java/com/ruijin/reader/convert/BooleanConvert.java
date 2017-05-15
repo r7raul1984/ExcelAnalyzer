@@ -5,16 +5,22 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
  * Created by tangjijun on 2017/5/15.
  */
-public class StringConvert implements Convert {
+public class BooleanConvert implements Convert {
+
+  public Object converTo(Row row, List<Meta> metas)
+      throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    return null;
+  }
 
   public Object converTo(List<Cell> cells, String defaultValue) {
     if (cells.size() != 1) {
-      return new Integer(defaultValue);
+      return Boolean.valueOf(defaultValue);
     }
     Cell cell = cells.get(0);
     if (cell != null) {
@@ -22,11 +28,13 @@ public class StringConvert implements Convert {
         return this.converTo(cell.getStringCellValue());
       }
     }
-    return new String(defaultValue);
+    return Boolean.valueOf(defaultValue);
   }
 
-
-  public String converTo(Object initValue) {
-    return StringUtils.trim((String) initValue);
+  public Object converTo(Object initValue) {
+    if (StringUtils.isNotBlank((String) initValue)) {
+      return Boolean.TRUE;
+    }
+    return Boolean.FALSE;
   }
 }

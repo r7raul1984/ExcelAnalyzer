@@ -13,6 +13,9 @@ public class Drugfast {
     this.isfast = isfast;
   }
 
+  public Drugfast() {
+  }
+
   public String getDrugName() {
     return drugName;
   }
@@ -25,7 +28,7 @@ public class Drugfast {
     return isfast;
   }
 
-  public void setIsfast(boolean isfast) {
+  public void setIsfast(Boolean isfast) {
     this.isfast = isfast;
   }
 
