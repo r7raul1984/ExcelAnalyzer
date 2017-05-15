@@ -10,7 +10,7 @@ public class StringConvert implements Convert {
 
   public Object converTo(List<Cell> cells, String defaultValue) {
     if (cells.size() != 1) {
-      return new Integer(defaultValue);
+      return new String(defaultValue);
     }
     Cell cell = cells.get(0);
     if (cell != null) {
