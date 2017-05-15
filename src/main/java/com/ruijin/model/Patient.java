@@ -36,23 +36,26 @@ public class Patient {
   }
 
   public int getInfectDays() {
-    if (inspectInfos.isEmpty()) {
-      return 0;
-    }
-    if (inspectInfos.size() == 1) {
-      if (StringUtils.isNotBlank(inspectInfos.get(0).getPosition())) {
-        return 1;
+    List<InspectInfo> inspectLocalInfos = new ArrayList<InspectInfo>(this.inspectInfos.size());
+    for (InspectInfo inspectInfo : inspectInfos) {
+      if (StringUtils.isNotBlank(inspectInfo.getPosition())) {
+        inspectLocalInfos.add(inspectInfo);
       }
+    }
+    if (inspectLocalInfos.isEmpty()) {
       return 0;
     }
-    Collections.sort(inspectInfos, new Comparator<InspectInfo>() {
+    if (inspectLocalInfos.size() == 1) {
+      return 1;
+    }
+    Collections.sort(inspectLocalInfos, new Comparator<InspectInfo>() {
 
       public int compare(InspectInfo o1, InspectInfo o2) {
         return o1.getInspectDate().compareTo(o2.getInspectDate());
       }
     });
-    DateTime begin = inspectInfos.get(0).getInspectDate();
-    DateTime end = inspectInfos.get(inspectInfos.size() - 1).getInspectDate();
+    DateTime begin = inspectLocalInfos.get(0).getInspectDate();
+    DateTime end = inspectLocalInfos.get(inspectLocalInfos.size() - 1).getInspectDate();
     Days days = Days.daysBetween(begin, end);
     return days.getDays();
   }
