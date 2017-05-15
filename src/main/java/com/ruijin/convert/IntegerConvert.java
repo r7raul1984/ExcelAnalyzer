@@ -1,8 +1,6 @@
-package com.ruijin.reader.convert;
+package com.ruijin.convert;
 
-import com.ruijin.reader.model.Meta;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 
 import java.util.List;
 

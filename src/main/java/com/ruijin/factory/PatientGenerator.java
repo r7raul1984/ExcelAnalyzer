@@ -1,5 +1,6 @@
-package com.ruijin.reader.factory;
+package com.ruijin.factory;
 
+import com.ruijin.model.*;
 import com.ruijin.reader.model.*;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,9 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by tangjijun on 2017/5/15.

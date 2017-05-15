@@ -1,4 +1,4 @@
-package com.ruijin.reader.model;
+package com.ruijin.model;
 
 /**
  * 耐药

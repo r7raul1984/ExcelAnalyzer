@@ -1,4 +1,4 @@
-package com.ruijin.reader.model;
+package com.ruijin.model;
 
 import java.util.ArrayList;
 import java.util.List;

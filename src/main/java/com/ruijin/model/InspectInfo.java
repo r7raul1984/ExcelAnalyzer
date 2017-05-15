@@ -1,4 +1,4 @@
-package com.ruijin.reader.model;
+package com.ruijin.model;
 
 import org.joda.time.DateTime;
 

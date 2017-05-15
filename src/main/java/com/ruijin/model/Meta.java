@@ -1,6 +1,6 @@
-package com.ruijin.reader.model;
+package com.ruijin.model;
 
-import com.ruijin.reader.convert.Convert;
+import com.ruijin.convert.Convert;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;

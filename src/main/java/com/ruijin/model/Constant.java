@@ -1,4 +1,4 @@
-package com.ruijin.reader.model;
+package com.ruijin.model;
 
 /**
  * Created by tangjijun on 2017/5/15.
