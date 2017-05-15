@@ -88,5 +88,11 @@ public class TestConvert {
         result.get(1).toString());
     assertEquals(false, result.get(1).hasManyPostionInfect());
     assertEquals(0, result.get(1).getInfectDays());
+    assertEquals(
+        "Patient{id=34, name='jiji3', admissionDate=2017-08-23T00:00:00.000+08:00, age=5, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
+        result.get(2).toString());
+    assertEquals(false, result.get(2).hasManyPostionInfect());
+    assertEquals(0, result.get(2).getInfectDays());
+
   }
 }
