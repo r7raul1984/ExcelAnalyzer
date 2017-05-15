@@ -1,7 +1,6 @@
 package com.ruijin.factory;
 
 import com.ruijin.model.*;
-import com.ruijin.reader.model.*;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;

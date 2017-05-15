@@ -1,8 +1,5 @@
 import com.google.common.collect.Lists;
-import com.ruijin.convert.BooleanConvert;
-import com.ruijin.convert.DateConvert;
-import com.ruijin.convert.IntegerConvert;
-import com.ruijin.convert.StringConvert;
+import com.ruijin.convert.*;
 import com.ruijin.factory.PatientGenerator;
 import com.ruijin.model.Meta;
 import com.ruijin.model.Metas;
@@ -34,7 +31,7 @@ public class TestConvert {
   @Test public void testConvert() throws Exception {
     pMeta.add(new Meta("age", Lists.newArrayList(3), Integer.class, new IntegerConvert()));
     pMeta.add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
-    pMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
+    pMeta.add(new Meta("id", Lists.newArrayList(1), Long.class, new LongConvert()));
     pMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
     iMeta.add(new Meta("grem", Lists.newArrayList(6), String.class, new StringConvert()));
@@ -65,7 +62,7 @@ public class TestConvert {
   @Test public void testConvert1() throws Exception {
     pMeta.add(new Meta("age", Lists.newArrayList(5), Integer.class, new IntegerConvert()));
     pMeta.add(new Meta("admissionDate", Lists.newArrayList(2), DateTime.class, new DateConvert()));
-    pMeta.add(new Meta("id", Lists.newArrayList(1), Integer.class, new IntegerConvert()));
+    pMeta.add(new Meta("id", Lists.newArrayList(1), Long.class, new LongConvert()));
     pMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);

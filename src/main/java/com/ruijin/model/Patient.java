@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Patient {
 
-  private int id;
+  private long id;
   private String name;
   private DateTime admissionDate;
   private int age;
@@ -30,7 +30,7 @@ public class Patient {
     this.inspectInfos = new ArrayList<InspectInfo>(inspectInfos);
   }
 
-  public int getId() {
+  public long getId() {
     return id;
   }
 
@@ -42,7 +42,7 @@ public class Patient {
     return age;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

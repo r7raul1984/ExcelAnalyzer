@@ -39,6 +39,9 @@ public class Meta {
     }else if (fieldClass == Boolean.class) {
       this.defaultValue = "false";
       this.type = Constant.TYPE_BOOLEAN;
+    } else if (fieldClass == Long.class) {
+      this.defaultValue = "-1";
+      this.type = Constant.TYPE_LONG;
     } else {
       this.defaultValue = "UNKNOW";
       this.type = Constant.TYPE_UNKNOW;
