@@ -35,6 +35,8 @@ public class TestConvert {
     pMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
     iMeta.add(new Meta("grem", Lists.newArrayList(6), String.class, new StringConvert()));
+    iMeta.add(new Meta("position", Lists.newArrayList(9), String.class, new StringConvert()));
+
     iMeta.add(new Meta("inspectType", Lists.newArrayList(5), String.class, new StringConvert()));
     iMeta.add(new Meta("inspectDate", Lists.newArrayList(4), DateTime.class, new DateConvert()));
 
@@ -52,10 +54,10 @@ public class TestConvert {
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', drugfasts=[Drugfast{drugName='药1', isfast=true}, Drugfast{drugName='药2', isfast=false}]}]}",
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', position='胸部', drugfasts=[Drugfast{drugName='药1', isfast=true}, Drugfast{drugName='药2', isfast=false}]}]}",
         result.get(0).toString());
     assertEquals(
-        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', drugfasts=[Drugfast{drugName='药1', isfast=false}, Drugfast{drugName='药2', isfast=false}]}]}",
+        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', position='', drugfasts=[Drugfast{drugName='药1', isfast=false}, Drugfast{drugName='药2', isfast=false}]}]}",
         result.get(1).toString());
   }
 
@@ -68,10 +70,10 @@ public class TestConvert {
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', drugfasts=[]}]}",
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
         result.get(0).toString());
     assertEquals(
-        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', drugfasts=[]}]}",
+        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
         result.get(1).toString());
   }
 }
