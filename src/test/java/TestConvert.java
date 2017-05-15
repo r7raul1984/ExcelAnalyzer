@@ -54,11 +54,13 @@ public class TestConvert {
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', position='胸部', drugfasts=[Drugfast{drugName='药1', isfast=true}, Drugfast{drugName='药2', isfast=false}]}]}",
-        result.get(0).toString());
-    assertEquals(
         "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', position='', drugfasts=[Drugfast{drugName='药1', isfast=false}, Drugfast{drugName='药2', isfast=false}]}]}",
+        result.get(0).toString());
+    assertEquals(false, result.get(0).hasManyPostionInfect());
+    assertEquals(
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', position='胸部', drugfasts=[Drugfast{drugName='药1', isfast=true}, Drugfast{drugName='药2', isfast=false}]}, InspectInfo{inspectDate=2015-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼2', position='鸡巴', drugfasts=[Drugfast{drugName='药1', isfast=false}, Drugfast{drugName='药2', isfast=true}]}]}",
         result.get(1).toString());
+    assertEquals(true, result.get(1).hasManyPostionInfect());
   }
 
   @Test public void testConvert1() throws Exception {
@@ -70,10 +72,12 @@ public class TestConvert {
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
-        result.get(0).toString());
-    assertEquals(
         "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
+        result.get(0).toString());
+    assertEquals(false, result.get(0).hasManyPostionInfect());
+    assertEquals(
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}, InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
         result.get(1).toString());
+    assertEquals(false, result.get(1).hasManyPostionInfect());
   }
 }

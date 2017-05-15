@@ -64,31 +64,13 @@ public class Report {
       List<Meta> iMeta = yearToIMeta.get(year);
       List<Metas> dMetas = yearToDMeta.get(year);
       List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
-      List<Patient> noduplicate = distinct(result);
       ISpecification spec = yearToSpec.get(year);
-      for (Patient p : noduplicate) {
+      for (Patient p : result) {
         spec.isSatisfiedBy(p);
       }
     }
   }
 
-  private static List<Patient> distinct(List<Patient> patients) {
-
-    if (patients.isEmpty()) {
-      return Collections.emptyList();
-    }
-    Map<Long, Patient> keyToPatient = new HashMap<Long, Patient>();
-    for (Patient p : patients) {
-      long id = p.getId();
-      if (keyToPatient.containsKey(id)) {
-        Patient pFromMap = keyToPatient.get(id);
-        p.getInspectInfos().addAll(pFromMap.getInspectInfos());
-      } else {
-        keyToPatient.put(id, p);
-      }
-    }
-    return new ArrayList<Patient>(keyToPatient.values());
-  }
 
   private static class Pepare2014Meta {
 

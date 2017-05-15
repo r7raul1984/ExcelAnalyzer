@@ -12,8 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by tangjijun on 2017/5/15.
@@ -43,7 +42,25 @@ public class PatientGenerator {
       patient.addInspectInfos(inspectInfo);
       result.add(patient);
     }
-    return result;
+    return distinct(result);
+  }
+
+  private List<Patient> distinct(List<Patient> patients) {
+
+    if (patients.isEmpty()) {
+      return Collections.emptyList();
+    }
+    Map<Long, Patient> keyToPatient = new HashMap<Long, Patient>();
+    for (Patient p : patients) {
+      long id = p.getId();
+      if (keyToPatient.containsKey(id)) {
+        Patient pFromMap = keyToPatient.get(id);
+        pFromMap.getInspectInfos().addAll(p.getInspectInfos());
+      } else {
+        keyToPatient.put(id, p);
+      }
+    }
+    return new ArrayList<Patient>(keyToPatient.values());
   }
 
   private Drugfast getDrugfastsInfo(Metas metas, Row headRow, Row row)
