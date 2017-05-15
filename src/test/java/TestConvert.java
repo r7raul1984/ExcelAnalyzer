@@ -52,7 +52,7 @@ public class TestConvert {
     dMetas.add(metas1);
 
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
-    assertEquals(2, result.size());
+    assertEquals(3, result.size());
     assertEquals(
         "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', position='', drugfasts=[Drugfast{drugName='药1', isfast=false}, Drugfast{drugName='药2', isfast=false}]}]}",
         result.get(0).toString());
@@ -63,6 +63,11 @@ public class TestConvert {
         result.get(1).toString());
     assertEquals(true, result.get(1).hasManyPostionInfect());
     assertEquals(365, result.get(1).getInfectDays());
+    assertEquals(
+        "Patient{id=34, name='jiji3', admissionDate=2017-08-23T00:00:00.000+08:00, age=25, inspectInfos=[InspectInfo{inspectDate=2013-12-23T00:00:00.000+08:00, inspectType='', grem='牛逼3', position='鸡巴', drugfasts=[Drugfast{drugName='药1', isfast=true}, Drugfast{drugName='药2', isfast=true}]}]}",
+        result.get(2).toString());
+    assertEquals(false, result.get(2).hasManyPostionInfect());
+    assertEquals(1, result.get(2).getInfectDays());
   }
 
   @Test public void testConvert1() throws Exception {
@@ -72,7 +77,7 @@ public class TestConvert {
     pMeta.add(new Meta("name", Lists.newArrayList(0), String.class, new StringConvert()));
 
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
-    assertEquals(2, result.size());
+    assertEquals(3, result.size());
     assertEquals(
         "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=null, inspectType='', grem='', position='', drugfasts=[]}]}",
         result.get(0).toString());
