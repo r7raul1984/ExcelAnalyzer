@@ -45,15 +45,20 @@ public class TestConvert {
     metas
         .addMeta(new Meta("drugName", Lists.newArrayList(1007), String.class, new StringConvert()));
     metas.addMeta(new Meta("isfast", Lists.newArrayList(7), Boolean.class, new BooleanConvert()));
+    Metas metas1 = new Metas();
+    metas1
+        .addMeta(new Meta("drugName", Lists.newArrayList(1008), String.class, new StringConvert()));
+    metas1.addMeta(new Meta("isfast", Lists.newArrayList(8), Boolean.class, new BooleanConvert()));
     dMetas.add(metas);
+    dMetas.add(metas1);
 
     List<Patient> result = patientGenerator.makePatients(filePath, 0, 1, 0, pMeta, iMeta, dMetas);
     assertEquals(2, result.size());
     assertEquals(
-        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', drugfasts=[Drugfast{drugName='药1', isfast=true}]}]}",
+        "Patient{id=33, name='jiji', admissionDate=2016-12-23T00:00:00.000+08:00, age=23, inspectInfos=[InspectInfo{inspectDate=2014-12-23T00:00:00.000+08:00, inspectType='3,4', grem='牛逼', drugfasts=[Drugfast{drugName='药1', isfast=true}, Drugfast{drugName='药2', isfast=false}]}]}",
         result.get(0).toString());
     assertEquals(
-        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', drugfasts=[Drugfast{drugName='药1', isfast=false}]}]}",
+        "Patient{id=-1, name='jiji2', admissionDate=1999-10-01T00:00:00.000+08:00, age=-1, inspectInfos=[InspectInfo{inspectDate=1999-10-01T00:00:00.000+08:00, inspectType='', grem='', drugfasts=[Drugfast{drugName='药1', isfast=false}, Drugfast{drugName='药2', isfast=false}]}]}",
         result.get(1).toString());
   }
 

@@ -2,7 +2,8 @@ package com.ruijin.reader.model;
 
 import org.joda.time.DateTime;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class InspectInfo {
@@ -12,21 +13,21 @@ public class InspectInfo {
   private DateTime inspectDate;//检验时间
   private String inspectType = "";//3,4
   private String grem = "";//细菌名称
-  private Set<Drugfast> drugfasts = new HashSet<Drugfast>();
+  private List<Drugfast> drugfasts = new ArrayList<Drugfast>();
 
   public InspectInfo(DateTime inspectDate, String inspectType, String grem,
       Set<Drugfast> drugfasts) {
     this.inspectDate = inspectDate;
     this.inspectType = inspectType;
     this.grem = grem;
-    this.drugfasts = new HashSet<Drugfast>(drugfasts);
+    this.drugfasts = new ArrayList<Drugfast>(drugfasts);
   }
 
   public InspectInfo() {
 
   }
 
-  public Set<Drugfast> getDrugfasts() {
+  public List<Drugfast> getDrugfasts() {
     return drugfasts;
   }
 
