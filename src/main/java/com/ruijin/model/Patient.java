@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class Patient {
 
-  private long id;
+  private long id;//用住院号
   private String name;
   private DateTime admissionDate;
   private int age;
