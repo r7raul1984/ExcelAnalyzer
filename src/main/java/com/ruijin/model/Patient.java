@@ -6,14 +6,14 @@ import org.joda.time.DateTime;
 import java.util.*;
 
 /**
- * Created by tangjijun on 2017/5/15.
+ * 病患
  */
 public class Patient {
 
   private long id;//用住院号
-  private String name;
-  private DateTime admissionDate;
-  private int age;
+  private String name;//姓名
+  private DateTime admissionDate;//入院时间
+  private int age;//年龄
 
   private List<InspectInfo> inspectInfos = new ArrayList<InspectInfo>();
 

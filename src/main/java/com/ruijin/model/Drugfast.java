@@ -1,12 +1,12 @@
 package com.ruijin.model;
 
 /**
- * 耐药
+ * 耐药性
  */
 public class Drugfast {
 
-  private String drugName = "";
-  private boolean isfast = false;
+  private String drugName = "";//药品名
+  private boolean isfast = false;//是否耐药
 
   public Drugfast(String drugName, boolean isfast) {
     this.drugName = drugName;

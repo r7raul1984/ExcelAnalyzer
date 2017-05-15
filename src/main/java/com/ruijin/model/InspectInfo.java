@@ -5,7 +5,9 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
+/**
+ * 检验信息
+ */
 public class InspectInfo {
 
   public static final InspectInfo EMPTY_INSPECTINFO = new InspectInfo();
