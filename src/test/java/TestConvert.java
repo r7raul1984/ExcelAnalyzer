@@ -4,6 +4,7 @@ import com.ruijin.factory.PatientGenerator;
 import com.ruijin.model.Meta;
 import com.ruijin.model.Metas;
 import com.ruijin.model.Patient;
+import com.ruijin.util.Utils;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,11 +43,11 @@ public class TestConvert {
 
     Metas metas = new Metas();
     metas
-        .addMeta(new Meta("drugName", Lists.newArrayList(1007), String.class, new StringConvert()));
+        .addMeta(new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(7)), String.class, new StringConvert()));
     metas.addMeta(new Meta("isfast", Lists.newArrayList(7), Boolean.class, new DrugFastFlagConvert()));
     Metas metas1 = new Metas();
     metas1
-        .addMeta(new Meta("drugName", Lists.newArrayList(1008), String.class, new StringConvert()));
+        .addMeta(new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(8)), String.class, new StringConvert()));
     metas1.addMeta(new Meta("isfast", Lists.newArrayList(8), Boolean.class, new DrugFastFlagConvert()));
     dMetas.add(metas);
     dMetas.add(metas1);
