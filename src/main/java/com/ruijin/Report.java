@@ -67,8 +67,7 @@ public class Report {
     yearToFilePath.put(year, filePath);
   }
 
-  public static void main(String args[])
-      throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, IOException {
+  public static void main(String args[]) throws IOException {
     String[] years = new String[] { "2016", "2015", "2014", "2013" };
     PatientGenerator patientGenerator = new PatientGenerator();
     for (String year : years) {
