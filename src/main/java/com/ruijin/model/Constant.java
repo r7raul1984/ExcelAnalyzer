@@ -9,5 +9,7 @@ public class Constant {
   public static final int TYPE_BOOLEAN = 3;
   public static final int TYPE_LONG = 4;
   public static final int TYPE_UNKNOW = -1;
+  public static final int NONE = 100;
+  public static final int HEADROW_FLAG = 1000;
 
 }

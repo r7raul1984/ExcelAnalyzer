@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.Row;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class BooleanConvert implements Convert {
+public class DrugFastFlagConvert implements Convert {
 
     public Object converTo(Row row, List<Meta> metas)
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {

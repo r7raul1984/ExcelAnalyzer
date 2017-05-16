@@ -3,6 +3,7 @@ package com.ruijin.factory;
 import com.google.common.collect.Lists;
 import com.ruijin.model.*;
 import com.ruijin.util.ReflectionUtils;
+import com.ruijin.util.Utils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -66,8 +67,8 @@ public class PatientGenerator {
       List<Integer> cellIndexs = meta.getCellIndexs();
       List<Cell> cells = new ArrayList<Cell>();
       for (int cellIndex : cellIndexs) {
-        if (cellIndex > 1000) {
-          cells.add(headRow.getCell(cellIndex - 1000));
+        if (Utils.isPointToHeadRow(cellIndex)) {
+          cells.add(headRow.getCell(Utils.getRealCellIndex(cellIndex)));
         } else {
           cells.add(row.getCell(cellIndex));
         }

@@ -1,17 +1,17 @@
 package com.ruijin;
 
 import com.google.common.collect.Lists;
-import com.ruijin.convert.BooleanConvert;
+import com.ruijin.convert.DrugFastFlagConvert;
 import com.ruijin.convert.DateConvert;
 import com.ruijin.convert.IntegerConvert;
 import com.ruijin.convert.StringConvert;
 import com.ruijin.factory.PatientGenerator;
 import com.ruijin.model.*;
 import com.ruijin.specification.ISpecification;
+import com.ruijin.util.Utils;
 import org.joda.time.DateTime;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Report {
@@ -153,14 +153,14 @@ public class Report {
 
       Metas metas = new Metas();
       metas.addMeta(
-          new Meta("drugName", Lists.newArrayList(1054), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(54)), String.class, new StringConvert()));
       metas
-          .addMeta(new Meta("isfast", Lists.newArrayList(54), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(54), Boolean.class, new DrugFastFlagConvert()));
       Metas metas1 = new Metas();
       metas1.addMeta(
-          new Meta("drugName", Lists.newArrayList(1066), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(66)), String.class, new StringConvert()));
       metas1
-          .addMeta(new Meta("isfast", Lists.newArrayList(66), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(66), Boolean.class, new DrugFastFlagConvert()));
       dMetas.add(metas);
       dMetas.add(metas1);
       return this;
@@ -202,14 +202,14 @@ public class Report {
 
       Metas metas = new Metas();
       metas.addMeta(
-          new Meta("drugName", Lists.newArrayList(1037), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(37)), String.class, new StringConvert()));
       metas
-          .addMeta(new Meta("isfast", Lists.newArrayList(37), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(37), Boolean.class, new DrugFastFlagConvert()));
       Metas metas1 = new Metas();
       metas1.addMeta(
-          new Meta("drugName", Lists.newArrayList(1038), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(38)), String.class, new StringConvert()));
       metas1
-          .addMeta(new Meta("isfast", Lists.newArrayList(38), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(38), Boolean.class, new DrugFastFlagConvert()));
       dMetas.add(metas);
       dMetas.add(metas1);
       return this;
@@ -246,20 +246,20 @@ public class Report {
 
       iMeta.add(new Meta("grem", Lists.newArrayList(18), String.class, new StringConvert()));
       iMeta
-          .add(new Meta("inspectType", Lists.newArrayList(100), String.class, new StringConvert()));
+          .add(new Meta("inspectType", Lists.newArrayList(Constant.NONE), String.class, new StringConvert()));
       iMeta.add(new Meta("inspectDate", Lists.newArrayList(15), DateTime.class, new DateConvert()));
       iMeta.add(new Meta("position", Lists.newArrayList(16), String.class, new StringConvert()));
 
       Metas metas = new Metas();
       metas.addMeta(
-          new Meta("drugName", Lists.newArrayList(1036), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(36)), String.class, new StringConvert()));
       metas
-          .addMeta(new Meta("isfast", Lists.newArrayList(36), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(36), Boolean.class, new DrugFastFlagConvert()));
       Metas metas1 = new Metas();
       metas1.addMeta(
-          new Meta("drugName", Lists.newArrayList(1037), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(37)), String.class, new StringConvert()));
       metas1
-          .addMeta(new Meta("isfast", Lists.newArrayList(37), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(37), Boolean.class, new DrugFastFlagConvert()));
       dMetas.add(metas);
       dMetas.add(metas1);
       return this;
@@ -296,20 +296,20 @@ public class Report {
 
       iMeta.add(new Meta("grem", Lists.newArrayList(18), String.class, new StringConvert()));
       iMeta
-          .add(new Meta("inspectType", Lists.newArrayList(100), String.class, new StringConvert()));
+          .add(new Meta("inspectType", Lists.newArrayList(Constant.NONE), String.class, new StringConvert()));
       iMeta.add(new Meta("inspectDate", Lists.newArrayList(15), DateTime.class, new DateConvert()));
       iMeta.add(new Meta("position", Lists.newArrayList(16), String.class, new StringConvert()));
 
       Metas metas = new Metas();
       metas.addMeta(
-          new Meta("drugName", Lists.newArrayList(1036), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(36)), String.class, new StringConvert()));
       metas
-          .addMeta(new Meta("isfast", Lists.newArrayList(36), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(36), Boolean.class, new DrugFastFlagConvert()));
       Metas metas1 = new Metas();
       metas1.addMeta(
-          new Meta("drugName", Lists.newArrayList(1037), String.class, new StringConvert()));
+          new Meta("drugName", Lists.newArrayList(Utils.pointToHeadRow(37)), String.class, new StringConvert()));
       metas1
-          .addMeta(new Meta("isfast", Lists.newArrayList(37), Boolean.class, new BooleanConvert()));
+          .addMeta(new Meta("isfast", Lists.newArrayList(37), Boolean.class, new DrugFastFlagConvert()));
       dMetas.add(metas);
       dMetas.add(metas1);
       return this;

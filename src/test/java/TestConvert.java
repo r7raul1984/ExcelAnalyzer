@@ -43,11 +43,11 @@ public class TestConvert {
     Metas metas = new Metas();
     metas
         .addMeta(new Meta("drugName", Lists.newArrayList(1007), String.class, new StringConvert()));
-    metas.addMeta(new Meta("isfast", Lists.newArrayList(7), Boolean.class, new BooleanConvert()));
+    metas.addMeta(new Meta("isfast", Lists.newArrayList(7), Boolean.class, new DrugFastFlagConvert()));
     Metas metas1 = new Metas();
     metas1
         .addMeta(new Meta("drugName", Lists.newArrayList(1008), String.class, new StringConvert()));
-    metas1.addMeta(new Meta("isfast", Lists.newArrayList(8), Boolean.class, new BooleanConvert()));
+    metas1.addMeta(new Meta("isfast", Lists.newArrayList(8), Boolean.class, new DrugFastFlagConvert()));
     dMetas.add(metas);
     dMetas.add(metas1);
 
