@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Patient {
 
-  private long id;//住院号
+  private String id;//住院号
   private String name;//姓名
   private DateTime admissionDate;//入院时间
   private int age;//年龄
@@ -23,7 +23,7 @@ public class Patient {
 
   }
 
-  public Patient(int id, String name, Date admissionDate, int age, List<InspectInfo> inspectInfos) {
+  public Patient(String id, String name, Date admissionDate, int age, List<InspectInfo> inspectInfos) {
     this.id = id;
     this.name = name;
     this.admissionDate = new DateTime(admissionDate);
@@ -31,7 +31,7 @@ public class Patient {
     this.inspectInfos = new ArrayList<InspectInfo>(inspectInfos);
   }
 
-  public long getId() {
+  public String getId() {
     return id;
   }
 
@@ -85,7 +85,7 @@ public class Patient {
     return age;
   }
 
-  public void setId(Long id) {
+  public void setId(String id) {
     this.id = id;
   }
 
@@ -105,8 +105,12 @@ public class Patient {
     return new DateTime(admissionDate);
   }
 
+  public void setInspectInfos(List<InspectInfo> inspectInfos) {
+    this.inspectInfos = new ArrayList<InspectInfo>(inspectInfos);
+  }
   public List<InspectInfo> getInspectInfos() {
     return inspectInfos;
+
   }
 
   public void addInspectInfos(InspectInfo inspectInfo) {

@@ -21,7 +21,7 @@ public class LongConvert implements Convert{
   }
 
 
-  public Long converTo(Object initValue) {
-    return ((Double) initValue).longValue();
+  public Long converTo(Object rawValue) {
+    return ((Double) rawValue).longValue();
   }
 }

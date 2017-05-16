@@ -9,6 +9,6 @@ public interface Convert {
 
   Object converTo(List<Cell> cells, String defaultValue);
 
-  Object converTo(Object initValue);
+  Object converTo(Object rawValue);
 
 }

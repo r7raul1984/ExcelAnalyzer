@@ -22,7 +22,7 @@ public class DateConvert implements Convert {
   }
 
 
-  public DateTime converTo(Object initValue) {
-    return new DateTime(initValue);
+  public DateTime converTo(Object rawValue) {
+    return new DateTime(rawValue);
   }
 }

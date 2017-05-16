@@ -48,9 +48,9 @@ public class PatientGenerator {
     if (patients.isEmpty()) {
       return Collections.emptyList();
     }
-    Map<Long, Patient> keyToPatient = new HashMap<Long, Patient>();
+    Map<String, Patient> keyToPatient = new HashMap<String, Patient>();
     for (Patient p : patients) {
-      long id = p.getId();
+      String id = p.getId();
       if (keyToPatient.containsKey(id)) {
         Patient pFromMap = keyToPatient.get(id);
         pFromMap.getInspectInfos().addAll(p.getInspectInfos());
